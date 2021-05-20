@@ -27,7 +27,7 @@
         @csrf
         @method('PUT')
    
-         <div class="row">
+         <div class="row" style="background-color: gray">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Movie Name:</strong>
@@ -58,12 +58,12 @@
                     <input type="text" name="cast" value="{{ $movie->cast }}" class="form-control" placeholder="cast">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Movie Image:</strong>
                     <input type="file" name="image" value="{{ $movie->image }}" class="form-control" placeholder="image">
                 </div>
-            </div>
+            </div> --}}
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

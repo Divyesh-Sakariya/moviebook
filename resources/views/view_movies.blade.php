@@ -7,7 +7,13 @@
                 <h2>Movie App</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-danger" href="/dashboard">Back</a>
+                <a class="btn btn-danger" href="/welcome">Back</a>
+                <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                    Logout
+                </a>  
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;" > 
+                    {{ csrf_field() }}
+                </form>
             </div>
         </div>
     </div>
@@ -40,11 +46,7 @@
             <td><img width="100" src="/img/{{$movie ->image}}" /></td>
             <td>
                 <form action="" method="POST">
-<<<<<<< HEAD:resources/views/view_movies.blade.php
                     <a class="btn btn-primary" href="">Booking</a>
-=======
-                    <a class="btn btn-primary" href="/seats">Booking</a>
->>>>>>> f8d87b629ea2a4fae4384e5e5aff91c4eb9844ee:resources/views/Movies/home.blade.php
                 </form>
             </td>
         </tr>

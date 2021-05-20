@@ -15,7 +15,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::latest()->paginate(5);
+        $movies = Movie::latest()->simplepaginate(5);
         return view('movies.index',compact('movies'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -46,7 +46,8 @@ class MovieController extends Controller
             'cast' => 'required',
             'image' => 'required',
         ]);
-    
+                      
+        
         Movie::create($request->all());
      
         return redirect()->route('movies.index')

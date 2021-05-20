@@ -3,8 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
 
-        <title>Movie Application</title>
+        <title>Movie App</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,26 +23,148 @@
         </style>
     </head>
     <body>
-    <div class="container">
-    <div class="mx-auto" style="width: 200px;">
-        <h1>Movie App</h1>
-    </div>
-        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
+        <header class="text-gray-600 body-font bg-gray-900">
+            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl text-white">Movie Application</span>
+              </a>
+              <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                @if (Route::has('login'))
+                @auth
+                <a href="{{ url('view_movies') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
+                @else
+                <a href="{{ route('login') }}" class="mr-5 hover:text-gray-900">Login</a>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="mr-5 hover:text-gray-900">Register</a>
+                @endif
                     @endauth
-                    <a href="{{ url('index') }}" class="ml-4 text-sm text-gray-700 underline">Admin</a>
+                    @endif  
+                    {{-- <a href="{{ url('index') }}" class="ml-4 text-sm text-gray-700 underline">Admin</a> --}}
+              </nav>
+              </div>
+              
+<div class="background-image grid grid-cols-1 m-auto">
+    <div class="flex text-gray-100 pt-10">
+        <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
+                  <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
+                    Watch Movie with extramovie.com
+                 </h1>
+                 <a href="{{ url('view_movies') }}" class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
+                    view More
+                 </a>
+        </div>
+    </div>
+</div>
+    <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15">
+        <div>
+            <img src="https://cdn.pixabay.com/photo/2019/12/20/11/06/movie-4708211_1280.jpg" width="500"  alt="">
+        </div>
+         <div class="m-auto sm:m-auto text-left w-4/5 block">
+            <h2 class="text-3xl font-extrablod text-gray-600">
+                Struggling to be better web devloper?
+            </h2>
+            <p class="py-8 text-gray-500 text-xl">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam similique quod tempora.
+            </p>
+            <p class="font-extrablod text-gray-600 text-s pb-9">
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis pariatur corporis rerum dicta. Eum dolorum corrupti impedit blanditiis doloremque?
+            </p>
+            {{-- <a href="/" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
+                Find Out More
+            </a> --}}
+         </div>
+    </div>
+    <div class="text-center p-15 bg-black text-white pt-6">
+        <h2 class="text-2xl pb-5 text-l">
+           Block Buster
+        </h2>
+        <span class="font-extrablod block text-4xl py-1">
+            Wonder Women 
+        </span>
+        <span class="font-extrablod block text-4xl py-1">
+           Holidays
+        </span>
+        <span class="font-extrablod block text-4xl py-1">
+            World Famous Lover
+        </span>
+        <span class="font-extrablod block text-4xl py-1">
+            Simbaa
+        </span>
+    </div>
+
+    <div class="text-center py-15 pt-7">
+        <span class="uppercase text-s text-gray-400">
+            Popular Movies
+        </span>
+        <h2 class="text-4xl font-blod py-10">
+            Trending Movies
+        </h2>
+        <p class="m-auto w-4/5 text-gray-500">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempore nemo nulla. Eum, illo autem quasi sint quis dicta numquam?
+        </p>
+    </div>
+
+    <div class="sm:grid grid-cols-2 w-4/5 m-auto">
+        <div class="flex bg-yellow-700 text-gray-100 pt-10">
+            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
+                <span class="uppercase text-xs">
+                    Bollywood
+                </span>
+                <h3 class="text-xl font-bold py-10">
+                    Hindi cinema, often known as Bollywood and formerly as Bombay cinema, is the Indian Hindi-language film industry based in Mumbai (formerly Bombay). The term is a portmanteau of "Bombay" and "Hollywood".
+
+                </h3>
+                <a href="{{ url('view_movies') }}"
+                class="uppercase bg-transparent border-2 border-gray-100 text-white hover:text-red-500 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                Find Out More
+            </a>
+            </div>
+            
+
+        </div>
+        <div>
+            <img src="https://cdn.pixabay.com/photo/2017/11/24/10/43/ticket-2974645_1280.jpg" width="600"  alt="">
+        </div>
+    </div>
+            <footer class="text-gray-600 body-font">
+                <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+                  <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="ml-3 text-xl text-white">Movie Application</span>
+                  </a>
+                  <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Divyesh —
+                    <a href="/" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@divyesh</a>
+                  </p>
+                  <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                    <a class="text-gray-500">
+                      <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                      <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                      <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                      </svg>
+                    </a>
+                  </span>
                 </div>
-            @endif    
-        </div>   
-    </div>    
-    </body>
+              </footer>
+        </body>
 </html>

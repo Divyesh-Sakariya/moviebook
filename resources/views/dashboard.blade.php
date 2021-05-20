@@ -17,12 +17,8 @@
         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;" > 
             {{ csrf_field() }}
         </form>
-<<<<<<< HEAD
         </div>   
 
-=======
-    </div>   
->>>>>>> f8d87b629ea2a4fae4384e5e5aff91c4eb9844ee
 </nav>
 </body>
 </html>

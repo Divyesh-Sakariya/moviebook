@@ -8,8 +8,12 @@ use App\Models\Movie;
 
 class ViewController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['welcome', 'show']]);
+    }
+
     public function index() {
-        $movies = Movie::latest()->paginate(5);
+        $movies = Movie::latest()->simplepaginate(5);
         return view('view_movies',compact('movies'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         // $movies = DB::select('select * from movies');

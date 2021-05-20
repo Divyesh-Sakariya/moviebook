@@ -19,24 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 Route::resource('movies', MovieController::class);
 
 Route::get('/index',[MovieController::class,'index']);
 
+Route::get('/home', function () {
+    return view('home');
+});
+
+
 Route::get('logout', '\App\Http\Controllers\Auth\MovieController@logout');
 
 Route::get('/view_movies',[ViewController::class,'index']);
-
-Route::get('/view_movies',[ViewController::class,'index']);
-
-<<<<<<< HEAD
-Route::get('/view_movies',[ViewController::class,'index']);
-=======
-Route::get('/seats',function(){
-    return view('seats');
-});
->>>>>>> f8d87b629ea2a4fae4384e5e5aff91c4eb9844ee
