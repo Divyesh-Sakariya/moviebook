@@ -20,7 +20,7 @@ class CreateMovieTable extends Migration
             $table->string('year');
             $table->string('runtime');
             $table->string('cast');
-            $table->string('image');
+            $table->text('image');
             $table->timestamps();
         });
     }

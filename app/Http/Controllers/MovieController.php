@@ -46,10 +46,23 @@ class MovieController extends Controller
             'cast' => 'required',
             'image' => 'required',
         ]);
-                      
-        
-        Movie::create($request->all());
-     
+        // Movie::create($request->all());
+        $file=$request->file('image');
+            if($file->isvalid())
+          {
+              $destinationpath='img/';
+              $image=date('ymdHis').'.'.$file->getClientOriginalExtension();
+              $file->move($destinationpath,$image);
+          } 
+          $movie=new Movie();
+          $movie->movie_name=$request->get('movie_name');          
+          $movie->overview=$request->get('overview');
+          $movie->year=$request->get('year');
+          $movie->runtime=$request->get('runtime');
+          $movie->cast=$request->get('cast');
+          $movie->image=$image;
+          $movie->save();                 
+             
         return redirect()->route('movies.index')
                         ->with('success','Movie created successfully.');
     }
