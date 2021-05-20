@@ -104,7 +104,6 @@ class MovieController extends Controller
             'year' => 'required',
             'runtime' => 'required',
             'cast' => 'required',
-            'image' => 'required',
         ]);
     
         $movie->update($request->all());
