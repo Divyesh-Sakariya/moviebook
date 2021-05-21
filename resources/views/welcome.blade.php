@@ -64,14 +64,14 @@
         </div>
          <div class="m-auto sm:m-auto text-left w-4/5 block">
             <h2 class="text-3xl font-extrablod text-gray-600">
-                Struggling to be better web devloper?
+                ExtraMovies is online video platform
             </h2>
             <p class="py-8 text-gray-500 text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam similique quod tempora.
+              ExtraMovies is an online based movie streaming website which you can use to search, download and watch the latest movies of Hollywood, Bollywood, Tollywood, Marathi, Bengali and others. ... Here you will get movies, TV shows and more. 
             </p>
-            <p class="font-extrablod text-gray-600 text-s pb-9">
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis pariatur corporis rerum dicta. Eum dolorum corrupti impedit blanditiis doloremque?
-            </p>
+            {{-- <p class="font-extrablod text-gray-600 text-s pb-9">
+              The legal alternative movie streaming and downloading links are here.
+            </p> --}}
             {{-- <a href="/" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
                 Find Out More
             </a> --}}
@@ -103,7 +103,7 @@
             Trending Movies
         </h2>
         <p class="m-auto w-4/5 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempore nemo nulla. Eum, illo autem quasi sint quis dicta numquam?
+          The legal alternative movie streaming and downloading links are here.
         </p>
     </div>
 

@@ -11,6 +11,8 @@
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <a href="{{ route('movies.create') }}" class="btn btn-success">Add Movie</a>
+        {{-- <a href="{{ route('actors.create') }}" class="btn btn-success ml-6">Add Actor</a> --}}
+        <a href="{{ route('actors.index') }}" class="btn btn-success ml-6">Show Actor</a>
         <a href="/" class="btn btn-primary ml-6">Back</a>
         
       </nav>
