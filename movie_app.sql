@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 02:10 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: May 21, 2021 at 02:43 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `actors`
+--
+
+CREATE TABLE `actors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthdate` date NOT NULL,
+  `listmovies` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `actors`
+--
+
+INSERT INTO `actors` (`id`, `name`, `bio`, `birthdate`, `listmovies`, `image`, `created_at`, `updated_at`) VALUES
+(10, 'Akashay Kumar', 'Rajiv Hari Om Bhatia, known professionally as Akshay Kumar, is an India-born naturalised Canadian actor, producer, martial artist and television personality who works in Bollywood,', '1988-05-09', 'Holidays, Gabbar,', '210521120009.jpg', '2021-05-21 06:30:09', '2021-05-21 06:30:09'),
+(11, 'Tiger Shroff', 'Jai Hemant \"Tiger\" Shroff is an Indian actor and singer known for his work in Hindi-language action films. The son of actor Jackie Shroff and producer Ayesha Dutt, he made his film debut with the 2014 romantic action film Heropanti.', '1992-02-03', 'Heropanti, Bagghi', '210521121327.jpg', '2021-05-21 06:43:27', '2021-05-21 06:43:27');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -36,7 +61,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Error reading data for table movie_app.failed_jobs: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `movie_app`.`failed_jobs`' at line 1
 
 -- --------------------------------------------------------
 
@@ -62,7 +86,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2021_05_17_131723_create_sessions_table', 1),
 (7, '2021_05_18_043011_create_movie_table', 2),
-(8, '2021_05_18_045053_create_movie_table', 3);
+(8, '2021_05_18_045053_create_movie_table', 3),
+(9, '2021_05_21_032808_admin', 4),
+(10, '2021_05_21_100628_actor', 5);
 
 -- --------------------------------------------------------
 
@@ -77,7 +103,7 @@ CREATE TABLE `movies` (
   `year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `runtime` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cast` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` blob NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -87,10 +113,11 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `movie_name`, `overview`, `year`, `runtime`, `cast`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Yeh Jawaani Hai Deewani', 'Yeh jawaani hai deewani is truly a treat to watch.Such a masterpiece. The joy that runs through you mind when you enjoy golden days with your best friends.when you don\'t know interacting with people still someone comes to your life,changes the rhythm,makes you fall in love with the most unexpected person and of course yourself too.6 years passed still the love and craze is same! it\'s insanely beautiful.A worth watching movie for all ages. But amidst all of these, i love naina the most.', '2013', '159 Minutes', 'Ranbir Kapoor and Dipika Padukone', 0x596568204a617761616e69204861692044656577616e6920312e6a7067, '2021-05-19 06:45:54', '2021-05-18 05:20:59'),
-(3, 'Secret Superstar', 'Secret Superstar is a 2017 Indian Hindi-language musical drama film written and directed by Advait Chandan, and produced by Aamir Khan and Kiran Rao under the studio Aamir Khan Productions. The film stars Zaira Wasim, Meher Vij, Raj Arjun and Aamir Khan. ... Wasim won the National Child Award for Exceptional Achievement.', '2017', '150 Minutes', 'Zaira Wasim and Aamir Khan', 0x736563726574207375706572737461722e6a7067, '2021-05-18 03:46:17', '2021-05-18 05:29:47'),
-(4, 'Hichki', 'Hichki ( transl. Hiccup) is a 2018 Indian Hindi drama film, directed by Siddharth P. Malhotra, written by Malhotra, Ankur Chaudhry, Ambar Hadap and Ganesh Pandit, and produced by Maneesh Sharma under the banner Yash Raj Films, with Aditya Chopra serving as presenter.', '2018', '116 Minutes', 'Rani Mukerji', 0x686963686b692e6a7067, '2021-05-18 03:51:41', '2021-05-18 05:26:19'),
-(5, 'Chhichhore', 'Indian Hindi-language coming of age comedy-drama film directed by Nitesh Tiwari, written by Tiwari in association with Piyush Gupta and Nikhil Mehrotra, and produced by Sajid Nadiadwala under Nadiadwala Grandson Entertainment, with Fox Star Studios acquiring the distribution rights.', '2019', '143 Minutes', 'Sushant Singh Rajput, Shraddha Kapoor and Varun Sharma', 0x636868696368686f72652e6a7067, '2021-05-18 05:33:50', '2021-05-18 05:33:50');
+(1, 'Yeh Jawaani Hai Deewani', 'Yeh jawaani hai deewani is truly a treat to watch.Such a masterpiece. The joy that runs through you mind when you enjoy golden days with your best friends.when you don\'t know interacting with people still someone comes to your life,changes the rhythm,makes you fall in love with the most unexpected person and of course yourself too.6 years passed still the love and craze is same! it\'s insanely beautiful.A worth watching movie for all ages. But amidst all of these, i love naina the most.', '2013', '159 Minutes', 'Ranbir Kapoor and Dipika Padukone', 'Yeh Jawaani Hai Deewani 1.jpg', '2021-05-19 06:45:54', '2021-05-18 05:20:59'),
+(3, 'Secret Superstar', 'Secret Superstar is a 2017 Indian Hindi-language musical drama film written and directed by Advait Chandan, and produced by Aamir Khan and Kiran Rao under the studio Aamir Khan Productions. The film stars Zaira Wasim, Meher Vij, Raj Arjun and Aamir Khan. ... Wasim won the National Child Award for Exceptional Achievement.', '2017', '150 Minutes', 'Zaira Wasim and Aamir Khan', 'secret superstar.jpg', '2021-05-18 03:46:17', '2021-05-18 05:29:47'),
+(4, 'Hichki', 'Hichki ( transl. Hiccup) is a 2018 Indian Hindi drama film, directed by Siddharth P. Malhotra, written by Malhotra, Ankur Chaudhry, Ambar Hadap and Ganesh Pandit, and produced by Maneesh Sharma under the banner Yash Raj Films, with Aditya Chopra serving as presenter.', '2018', '116 Minutes', 'Rani Mukerji', 'hichki.jpg', '2021-05-18 03:51:41', '2021-05-18 05:26:19'),
+(5, 'Chhichhore', 'Indian Hindi-language coming of age comedy-drama film directed by Nitesh Tiwari, written by Tiwari in association with Piyush Gupta and Nikhil Mehrotra, and produced by Sajid Nadiadwala under Nadiadwala Grandson Entertainment, with Fox Star Studios acquiring the distribution rights.', '2019', '143 Minutes', 'Sushant Singh Rajput, Shraddha Kapoor and Varun Sharma', 'chhichhore.jpg', '2021-05-18 05:33:50', '2021-05-19 22:10:22'),
+(19, 'Radhe - The Most Wanted Bhai', 'Radhe - The Most Wanted Bhai is an adrenaline-pumping action entertainer. The story revolves around the rampant usage of drugs in our society and how the youth are getting destroyed in the bargain. The protagonist is a smart and tough cop with a kind heart and witty personality. He usually likes to do things his way to get justice restored in society. How far RADHE goes to bring justice, clean the streets from drugs to save the youth and to restore peace in society forms the crux of the story.', '2021', '120 Minutes', 'Sushant Singh Rajput, Shraddha Kapoor and Salman bhai', '210520112821.jpg', '2021-05-20 05:58:21', '2021-05-20 07:03:23');
 
 -- --------------------------------------------------------
 
@@ -142,7 +169,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('zK5oERd2bZ45XDlTEiNM9tFYAdnsrJDs7LPLpLqS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZUxVMkpoeUZCOTZmWG9tY0pUWG0xdmcwTGFtYUhzRWhsSHJZYnBsSSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbmRleCI7fX0=', 1621336333);
+('E940Qfi6RrdTmV6wHKtUBjmSQBds4B18NnJ6f79i', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiaUhmdkM4ekpFSldkeTlGZ0U0bjVqVFdqNnpqVDVheUdQbHpmQWpHaSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdzUxU283ZC9xdTNBRVl0bEhVYjdkdUphcElVYzRBSlpmcXlOUkpsZUZrZFR2QWZ0Z3VFcnEiO30=', 1621600498);
 
 -- --------------------------------------------------------
 
@@ -172,11 +199,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `city`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(2, 'Anjani Patel', '8488057116', 'Ahmedabad', 'anjanipatel2211@gmail.com', NULL, '$2y$10$p4VXdjCNKRpN48/gpRiZm.peHe3Z9A9jcNUmeGzNI7Aptm6cqUQGK', NULL, NULL, NULL, NULL, NULL, '2021-05-17 08:21:40', '2021-05-17 08:21:40');
+(3, 'Divyesh', '9106264344', 'jetpur', 'admin@admin.com', NULL, '$2y$10$w51So7d/qu3AEYtlHUb7duJapIUc4AJZfqyNRJleFkdTvAftguErq', NULL, NULL, NULL, NULL, NULL, '2021-05-19 07:59:36', '2021-05-19 07:59:36');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `actors`
+--
+ALTER TABLE `actors`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -231,6 +264,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `actors`
+--
+ALTER TABLE `actors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -240,13 +279,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -258,7 +297,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

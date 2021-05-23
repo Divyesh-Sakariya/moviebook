@@ -12,7 +12,7 @@ class ViewActorController extends Controller
     }
 
     public function index() {
-        $actors = Actor::latest()->simplepaginate(5);
+        $actors = Actor::latest()->simplePaginate(5);
         return view('view_actor',compact('actors'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         // $movies = DB::select('select * from movies');

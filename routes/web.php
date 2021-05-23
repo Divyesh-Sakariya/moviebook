@@ -45,6 +45,8 @@ Route::get('/view_actor',[ViewActorController::class,'index']);
 
 Route::get('/seats',[ViewController::class,'viewseat']);
 
+Route::get('/search',[ViewController::class,'search']);
+
 Route::get('/create',[ActorController::class,'index']);
 
 //Route::resource('actors','App\Http\Controllers\ActorController');

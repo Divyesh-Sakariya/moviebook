@@ -13,34 +13,70 @@
     </nav>
         <div class="pull-right">
             <a class="btn btn-primary" href="/view_movies">Back</a>
-            {{-- <a class="btn btn-primary" href="/view_actor">Actors</a> --}}
-                   
+            <a class="btn btn-primary" href="/view_actor">Actors</a>
+            <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                Logout
+            </a>  
+            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;" > 
+                {{ csrf_field() }}
+            </form>
         </div>
+          
+  
     </div>
   </header>
-  
-@foreach ($actors as $actor)
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-      <img class="object-cover object-center rounded" alt="hero" style="width: 500px; height: 300px;" src="/img/{{$actor->image}}" />
-    </div>
-    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{$actor->name}}
-       
-      </h1>
-      <p class="mb-8 leading-relaxed">Biography: {{$actor->bio}}</p>
-      <p class="mb-8 leading-relaxed">BirthDate: {{$actor->birthdate}}</p>
-      <p class="mb-8 leading-relaxed text-gray-900">Movies: {{$actor->listmovies}}</p>
-    </div>
-  </div>
-</section>
+   
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+   
+    @foreach ($movies as $movie)
+    
+    <div class=" container movie-info border-b border-gray-800 bg-gray-400 mt-5">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+            <div class="flex-none">
+                <img src="/img/{{$movie ->image}}" alt="poster" class="w-64 lg:w-96">
+            </div>
+            <div class="md:ml-24">
+                <h2 class="text-4xl mt-4 md:mt-0 font-semibold">{{ $movie->movie_name }}</h2>
+                <div class="flex flex-wrap items-center text-black text-sm mt-5">
+                                    
+                    <span>{{ $movie->year }}</span>
+                    <span class="mx-2">|</span>
+                    <span>{{ $movie->runtime }}</span>
+                </div>
 
-@endforeach
+                <p class="text-gray-800 mt-8">
+                    {{ $movie->overview }}
+                </p>
 
+                <div class="mt-5">
+                    <h4 class="text-black font-semibold">Cast Member</h4>
+                    <div class="flex mt-2">
+                       
+                            <div class="mr-8">
+                                <div>{{ $movie->cast }}</div>
+                               
+                            </div>
+                            
+                        </div>
+                            
+                </div>
+                <td>
+                    <form action="" method="POST">
+                        <a class="btn btn-primary mt-5" href="/seats">Booking</a>
+                    </form>
+                </td>
+            </div>
+        </div>
+    </div>               
+
+    @endforeach
     
     
-
+    {{-- {!! $movies->links() !!} --}}
     
     <footer class="text-gray-600 body-font bg-gray-400 mt-5">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
