@@ -20,29 +20,25 @@
   </header>
   
 @foreach ($actors as $actor)
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font bg-gray-800">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <img class="object-cover object-center rounded" alt="hero" style="width: 500px; height: 300px;" src="/img/{{$actor->image}}" />
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{$actor->name}}
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-400">{{$actor->name}}
        
       </h1>
-      <p class="mb-8 leading-relaxed">Biography: {{$actor->bio}}</p>
-      <p class="mb-8 leading-relaxed">BirthDate: {{$actor->birthdate}}</p>
-      <p class="mb-8 leading-relaxed text-gray-900">Movies: {{$actor->listmovies}}</p>
+      <p class="mb-8 leading-relaxed text-gray-400">Biography: {{$actor->bio}}</p>
+      <p class="mb-8 leading-relaxed text-gray-400">BirthDate: {{$actor->birthdate}}</p>
+      <p class="mb-8 leading-relaxed text-gray-400">Movies: {{$actor->listmovies}}</p>
     </div>
   </div>
 </section>
 
 @endforeach
-
-    
-    
-
-    
-    <footer class="text-gray-600 body-font bg-gray-400 mt-5">
+   
+    <footer class="text-gray-600 body-font bg-gray-400">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">

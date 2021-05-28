@@ -74,9 +74,7 @@
     </div>               
 
     @endforeach
-    
-    
-    {{-- {!! $movies->links() !!} --}}
+    <h3 class=" text-center">NO! Movie Found...</h3>   
     
     <footer class="text-gray-600 body-font bg-gray-400 mt-5">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">

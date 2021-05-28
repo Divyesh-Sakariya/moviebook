@@ -34,11 +34,11 @@
               <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 @if (Route::has('login'))
                 @auth
-                <a href="{{ url('view_movies') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
+                <a href="{{ url('view_movies') }}" class="mr-5 text-white hover:text-blue-500">Dashboard</a>
                 @else
-                <a href="{{ route('login') }}" class="mr-5 hover:text-gray-900">Login</a>
+                <a href="{{ route('login') }}" class="mr-5 text-white hover:text-blue-500">Login</a>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="mr-5 hover:text-gray-900">Register</a>
+                <a href="{{ route('register') }}" class="mr-5 text-white hover:text-blue-500">Register</a>
                 @endif
                     @endauth
                     @endif  
