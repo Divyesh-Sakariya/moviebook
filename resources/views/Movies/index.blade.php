@@ -13,6 +13,7 @@
         <a href="{{ route('movies.create') }}" class="btn btn-success">Add Movie</a>
         {{-- <a href="{{ route('actors.create') }}" class="btn btn-success ml-6">Add Actor</a> --}}
         <a href="{{ route('actors.index') }}" class="btn btn-success ml-6">Show Actor</a>
+        <a href="{{ route('theatre.index') }}" class="btn btn-success ml-6">Show Theatre</a>
         <a href="/" class="btn btn-primary ml-6">Back</a>
         
       </nav>

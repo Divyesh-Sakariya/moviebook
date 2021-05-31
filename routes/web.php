@@ -5,6 +5,10 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\ViewActorController;
+use App\Http\Controllers\TheatreController;
+use App\Http\Controllers\ViewTheatreController;
+
+
 
 
 
@@ -45,6 +49,8 @@ Route::get('/view_actor',[ViewActorController::class,'index']);
 
 Route::get('/seats',[ViewController::class,'viewseat']);
 
+Route::get('/theatreshow',[ViewTheatreController::class,'viewshow']);
+
 Route::get('/search',[ViewController::class,'search']);
 
 Route::get('/create',[ActorController::class,'index']);
@@ -52,3 +58,9 @@ Route::get('/create',[ActorController::class,'index']);
 //Route::resource('actors','App\Http\Controllers\ActorController');
 
 Route::resource('actors', ActorController::class);
+
+Route::get('/create',[TheatreController::class,'index']);
+
+Route::resource('theatre', TheatreController::class);
+
+

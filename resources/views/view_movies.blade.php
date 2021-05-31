@@ -81,7 +81,7 @@
                 </div>
                 <td>
                     <form action="" method="POST">
-                        <a class="btn btn-primary mt-5" href="/seats">Booking</a>
+                        <a class="btn btn-primary mt-5" href="/theatreshow">Booking</a>
                     </form>
                 </td>
             </div>

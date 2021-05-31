@@ -161,8 +161,12 @@
           </div>
         </div>
         
-      </div>
-
+      </div> 
+        <div>
+          <form action="" method="POST">
+            <a class="btn btn-primary mt-5" href="/">Process TO Book</a>
+        </form>
+       </div>
 <script>
 
 $(".cinema-seats .seat").on("click", function () {
