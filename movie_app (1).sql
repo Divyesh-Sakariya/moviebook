@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2021 at 02:43 PM
+-- Generation Time: Jun 03, 2021 at 03:06 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -44,7 +44,8 @@ CREATE TABLE `actors` (
 
 INSERT INTO `actors` (`id`, `name`, `bio`, `birthdate`, `listmovies`, `image`, `created_at`, `updated_at`) VALUES
 (10, 'Akashay Kumar', 'Rajiv Hari Om Bhatia, known professionally as Akshay Kumar, is an India-born naturalised Canadian actor, producer, martial artist and television personality who works in Bollywood,', '1988-05-09', 'Holidays, Gabbar,', '210521120009.jpg', '2021-05-21 06:30:09', '2021-05-21 06:30:09'),
-(11, 'Tiger Shroff', 'Jai Hemant \"Tiger\" Shroff is an Indian actor and singer known for his work in Hindi-language action films. The son of actor Jackie Shroff and producer Ayesha Dutt, he made his film debut with the 2014 romantic action film Heropanti.', '1992-02-03', 'Heropanti, Bagghi', '210521121327.jpg', '2021-05-21 06:43:27', '2021-05-21 06:43:27');
+(11, 'Tiger Shroff', 'Jai Hemant \"Tiger\" Shroff is an Indian actor and singer known for his work in Hindi-language action films. The son of actor Jackie Shroff and producer Ayesha Dutt, he made his film debut with the 2014 romantic action film Heropanti.', '1992-02-03', 'Heropanti, Bagghi 2, 3', '210521121327.jpg', '2021-05-21 06:43:27', '2021-05-30 23:56:52'),
+(12, 'Johnny Depp', 'John Christopher Depp II is an American actor, producer, and musician. He has been nominated for ten Golden Globe Awards, winning one for Best Actor for Sweeney Todd: The Demon Barber of Fleet Street,', '1988-06-07', 'Fantastic Beasts and Where to Find Them 3, The Flash', '210601054421.jpg', '2021-06-01 00:14:21', '2021-06-01 00:14:21');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,30 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_05_18_043011_create_movie_table', 2),
 (8, '2021_05_18_045053_create_movie_table', 3),
 (9, '2021_05_21_032808_admin', 4),
-(10, '2021_05_21_100628_actor', 5);
+(10, '2021_05_21_100628_actor', 5),
+(11, '2021_05_31_023229_create_theatres_table', 6),
+(12, '2021_06_03_061914_create_ticket_books_table', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movieposts`
+--
+
+CREATE TABLE `movieposts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `t_id` bigint(20) UNSIGNED NOT NULL,
+  `m_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `movieposts`
+--
+
+INSERT INTO `movieposts` (`id`, `t_id`, `m_id`, `created_at`, `updated_at`) VALUES
+(1, 6, 5, '2021-05-14 06:55:38', '2021-05-07 06:55:38');
 
 -- --------------------------------------------------------
 
@@ -169,7 +193,57 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('E940Qfi6RrdTmV6wHKtUBjmSQBds4B18NnJ6f79i', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiaUhmdkM4ekpFSldkeTlGZ0U0bjVqVFdqNnpqVDVheUdQbHpmQWpHaSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdzUxU283ZC9xdTNBRVl0bEhVYjdkdUphcElVYzRBSlpmcXlOUkpsZUZrZFR2QWZ0Z3VFcnEiO30=', 1621600498);
+('879MQebygCiQFP0mkLWay9Z6GKFfbjbViMpz9tFq', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiR25ES1dZWlpFdWxZS0RZTWRMekRJN3o0Mm9pOTMwRWJaamxaNjRCYSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tb3ZpZXBvc3QiO31zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHc1MVNvN2QvcXUzQUVZdGxIVWI3ZHVKYXBJVWM0QUpaZnF5TlJKbGVGa2RUdkFmdGd1RXJxIjt9', 1622725249);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `theatres`
+--
+
+CREATE TABLE `theatres` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `starttime` time NOT NULL,
+  `endtime` time NOT NULL,
+  `price` int(11) NOT NULL,
+  `seatsAvailable` int(11) NOT NULL,
+  `totalseat` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `theatres`
+--
+
+INSERT INTO `theatres` (`id`, `name`, `starttime`, `endtime`, `price`, `seatsAvailable`, `totalseat`, `created_at`, `updated_at`) VALUES
+(6, 'Balaji Cineplex', '02:21:00', '04:21:00', 120, 20, 50, '2021-05-31 00:21:57', '2021-05-31 00:21:57'),
+(7, 'Acropolise', '02:25:00', '04:25:00', 350, 25, 65, '2021-05-31 00:25:19', '2021-05-31 00:25:19'),
+(8, 'PVR P1 XL', '12:30:00', '15:00:00', 250, 10, 40, '2021-05-31 05:38:20', '2021-05-31 05:38:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket_books`
+--
+
+CREATE TABLE `ticket_books` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` int(11) NOT NULL,
+  `seats` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ticket_books`
+--
+
+INSERT INTO `ticket_books` (`id`, `name`, `number`, `seats`, `created_at`, `updated_at`) VALUES
+(62, 'Divyesh', 2, 'A6,A7', '2021-06-03 04:45:04', '2021-06-03 04:45:04'),
+(63, 'Jay', 3, 'C10,C11,C12', '2021-06-03 05:44:44', '2021-06-03 05:44:44');
 
 -- --------------------------------------------------------
 
@@ -225,6 +299,14 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `movieposts`
+--
+ALTER TABLE `movieposts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `movieposts_t_id_foreign` (`t_id`),
+  ADD KEY `movieposts_m_id_foreign` (`m_id`);
+
+--
 -- Indexes for table `movies`
 --
 ALTER TABLE `movies`
@@ -253,6 +335,18 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `theatres`
+--
+ALTER TABLE `theatres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ticket_books`
+--
+ALTER TABLE `ticket_books`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -267,7 +361,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actors`
 --
 ALTER TABLE `actors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -279,7 +373,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `movieposts`
+--
+ALTER TABLE `movieposts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `movies`
@@ -294,10 +394,33 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `theatres`
+--
+ALTER TABLE `theatres`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `ticket_books`
+--
+ALTER TABLE `ticket_books`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `movieposts`
+--
+ALTER TABLE `movieposts`
+  ADD CONSTRAINT `movieposts_m_id_foreign` FOREIGN KEY (`m_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `movieposts_t_id_foreign` FOREIGN KEY (`t_id`) REFERENCES `theatres` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
