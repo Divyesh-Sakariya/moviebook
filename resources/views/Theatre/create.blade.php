@@ -30,6 +30,12 @@
                 <input type="text" name="name" class="form-control" placeholder="name">
             </div>
         </div>
+        <div class="col-xs-8 col-sm-8 col-md-12">
+            <div class="form-group">
+                <strong>City:</strong>
+                <input type="text" name="city" class="form-control" placeholder="City">
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Starttime:</strong>
@@ -60,7 +66,8 @@
                 <strong>Total Seat:</strong>
                 <input type="number" name="totalseat" class="form-control" placeholder="Enter TotalSeat">
             </div>
-       
+        </div>
+               
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

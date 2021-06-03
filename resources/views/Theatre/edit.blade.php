@@ -31,6 +31,12 @@
                 <input type="text" name="name" class="form-control" value="{{$theatre->name}}">
             </div>
         </div>
+        <div class="col-xs-8 col-sm-8 col-md-12">
+            <div class="form-group">
+                <strong>City:</strong>
+                <input type="text" name="city" class="form-control" value="{{$theatre->city}}">
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Starttime:</strong>

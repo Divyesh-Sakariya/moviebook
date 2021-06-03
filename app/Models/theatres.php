@@ -9,6 +9,6 @@ class theatres extends Model
 {
     use HasFactory;
     protected $fillable  = [
-        'name','starttime','endtime','price','seatsAvailable','totalseat'
+        'name','city','starttime','endtime','price','seatsAvailable','totalseat'
     ];
 }

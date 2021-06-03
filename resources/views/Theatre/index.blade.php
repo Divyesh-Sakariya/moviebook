@@ -27,6 +27,7 @@
     <tr>
         <th>No</th>
         <th>Name</th>
+        <th>City</th>
         <th>StartTime</th>
         <th>EndTime</th>
         <th>Price</th>
@@ -39,6 +40,7 @@
         <tr>
             <td>{{++$i}}</td>
             <td>{{$theatre->name}}</td>
+            <td>{{$theatre->city}}</td>
             <td>{{$theatre->starttime}}</td>
             <td>{{$theatre->endtime}}</td>
             <td>{{$theatre->price}}</td>

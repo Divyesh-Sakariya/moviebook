@@ -40,6 +40,7 @@ class TheatreController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'city' => 'required',
             'starttime' => 'required',
             'endtime' => 'required',
             'price' => 'required',
@@ -49,6 +50,7 @@ class TheatreController extends Controller
         ]);
         $theatre = new Theatres();
         $theatre->name = request()->name;
+        $theatre->city = request()->city;
         $theatre->starttime = request()->starttime;
         $theatre->endtime = request()->endtime;
         $theatre->price = request()->price;
@@ -93,6 +95,7 @@ class TheatreController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'city' => 'required',
             'starttime' => 'required',
             'endtime' => 'required',
             'price' => 'required',

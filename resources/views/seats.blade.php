@@ -17,7 +17,7 @@
     
       <div class="inputForm">
         <center>
-          Name *: <input type="text" id="Username" required>
+         Theatre Name *: <input type="text" id="Username" required>
           Number of Seats *: <input type="number" id="Numseats" required>
           <br /><br />
           <button onclick="takeData()">Start Selecting</button>

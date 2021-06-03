@@ -16,12 +16,14 @@ class CreateTheatresTable extends Migration
         Schema::create('theatres', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("city");
             $table->time("starttime");
             $table->time("endtime");
             $table->integer("price");
             $table->integer("seatsAvailable");
             $table->integer("totalseat");
             $table->timestamps();
+            
         });
     }
 
