@@ -7,6 +7,7 @@ use App\Http\Controllers\ActorController;
 use App\Http\Controllers\ViewActorController;
 use App\Http\Controllers\TheatreController;
 use App\Http\Controllers\ViewTheatreController;
+use App\Http\Controllers\SeatBookController;
 
 
 
@@ -46,8 +47,13 @@ Route::get('/view_movies',[ViewController::class,'index']);
 
 Route::get('/view_actor',[ViewActorController::class,'index']);
 
-
 Route::get('/seats',[ViewController::class,'viewseat']);
+
+Route::get('/viewTicket',[SeatBookController::class,'index']);
+
+Route::post('/seats', "App\Http\Controllers\SeatBookController@store");
+
+// Route::resource('seats', SeatBookController::class);
 
 Route::get('/theatreshow',[ViewTheatreController::class,'viewshow']);
 
@@ -62,5 +68,6 @@ Route::resource('actors', ActorController::class);
 Route::get('/create',[TheatreController::class,'index']);
 
 Route::resource('theatre', TheatreController::class);
+
 
 

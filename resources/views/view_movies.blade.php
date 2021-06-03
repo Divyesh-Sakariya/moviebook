@@ -28,6 +28,7 @@
     </nav>
         <div class="pull-right">
             <a class="btn btn-primary" href="/welcome">Back</a>
+            <a class="btn btn-primary" href="/viewTicket">View Ticket</a>
             <a class="btn btn-primary" href="/view_actor">Actors</a>
             <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                 Logout

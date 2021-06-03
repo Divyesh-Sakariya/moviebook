@@ -18,7 +18,7 @@
         </div>
     </div>
   </header>
-  <section class="text-gray-600 body-font overflow-hidden">
+  <section class="text-gray-600 body-font overflow-hidden bg-gray-200">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-col text-center w-full mb-20">
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Theatre</h1>
@@ -81,9 +81,7 @@
       </div>
       @endforeach
     </div>
-  </section>
-
-  
+  </section>  
    
     <footer class="text-gray-600 body-font bg-gray-400">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
