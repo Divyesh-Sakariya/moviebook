@@ -8,6 +8,7 @@ use App\Http\Controllers\ViewActorController;
 use App\Http\Controllers\TheatreController;
 use App\Http\Controllers\ViewTheatreController;
 use App\Http\Controllers\SeatBookController;
+use App\Http\Controllers\MoviePostController;
 
 
 
@@ -69,5 +70,5 @@ Route::get('/create',[TheatreController::class,'index']);
 
 Route::resource('theatre', TheatreController::class);
 
-
+Route::get('/moviepost',[MoviePostController::class,'index']);
 

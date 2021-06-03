@@ -13,7 +13,7 @@
   </head>
   <body onload="onLoaderFunc()">
 
-    <a class="btn btn-primary" href="/view_movies">Back</a>
+    <a class="btn btn-primary" href="/theatreshow">Back</a>
     
       <div class="inputForm">
         <center>
