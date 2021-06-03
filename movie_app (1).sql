@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 03:06 PM
+-- Generation Time: Jun 03, 2021 at 09:00 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -193,7 +193,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('879MQebygCiQFP0mkLWay9Z6GKFfbjbViMpz9tFq', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiR25ES1dZWlpFdWxZS0RZTWRMekRJN3o0Mm9pOTMwRWJaamxaNjRCYSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tb3ZpZXBvc3QiO31zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHc1MVNvN2QvcXUzQUVZdGxIVWI3ZHVKYXBJVWM0QUpaZnF5TlJKbGVGa2RUdkFmdGd1RXJxIjt9', 1622725249);
+('s1tSDswowpI2k7cFodFbHbyfaGK97wPDOSHxboPY', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNm9lNmsxSDB5cjJSMUZMU1VhNFV4UFBVdXNUMG5xVGRvSWpueEtxTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3VGlja2V0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR3NTFTbzdkL3F1M0FFWXRsSFViN2R1SmFwSVVjNEFKWmZxeU5SSmxlRmtkVHZBZnRndUVycSI7fQ==', 1622746690);
 
 -- --------------------------------------------------------
 
@@ -204,6 +204,7 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 CREATE TABLE `theatres` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `starttime` time NOT NULL,
   `endtime` time NOT NULL,
   `price` int(11) NOT NULL,
@@ -217,10 +218,9 @@ CREATE TABLE `theatres` (
 -- Dumping data for table `theatres`
 --
 
-INSERT INTO `theatres` (`id`, `name`, `starttime`, `endtime`, `price`, `seatsAvailable`, `totalseat`, `created_at`, `updated_at`) VALUES
-(6, 'Balaji Cineplex', '02:21:00', '04:21:00', 120, 20, 50, '2021-05-31 00:21:57', '2021-05-31 00:21:57'),
-(7, 'Acropolise', '02:25:00', '04:25:00', 350, 25, 65, '2021-05-31 00:25:19', '2021-05-31 00:25:19'),
-(8, 'PVR P1 XL', '12:30:00', '15:00:00', 250, 10, 40, '2021-05-31 05:38:20', '2021-05-31 05:38:20');
+INSERT INTO `theatres` (`id`, `name`, `city`, `starttime`, `endtime`, `price`, `seatsAvailable`, `totalseat`, `created_at`, `updated_at`) VALUES
+(3, 'PVR P1 XL', 'Surat', '03:10:00', '05:10:00', 120, 12, 20, '2021-06-03 13:20:35', '2021-06-03 13:20:35'),
+(4, 'Acropolise', 'Surat', '10:20:00', '12:20:00', 250, 23, 50, '2021-06-03 13:21:49', '2021-06-03 13:21:49');
 
 -- --------------------------------------------------------
 
@@ -242,8 +242,8 @@ CREATE TABLE `ticket_books` (
 --
 
 INSERT INTO `ticket_books` (`id`, `name`, `number`, `seats`, `created_at`, `updated_at`) VALUES
-(62, 'Divyesh', 2, 'A6,A7', '2021-06-03 04:45:04', '2021-06-03 04:45:04'),
-(63, 'Jay', 3, 'C10,C11,C12', '2021-06-03 05:44:44', '2021-06-03 05:44:44');
+(64, 'PVR', 1, 'A6', '2021-06-03 13:27:07', '2021-06-03 13:27:07'),
+(65, 'Acropolise', 3, 'E9,E10,E11', '2021-06-03 13:28:06', '2021-06-03 13:28:06');
 
 -- --------------------------------------------------------
 
@@ -397,13 +397,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `theatres`
 --
 ALTER TABLE `theatres`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ticket_books`
 --
 ALTER TABLE `ticket_books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `users`
