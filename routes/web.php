@@ -12,8 +12,6 @@ use App\Http\Controllers\MoviePostController;
 
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,32 +31,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::resource('movies', MovieController::class);
-
-Route::get('/index',[MovieController::class,'index']);
 
 Route::get('/home', function () {
     return view('home');
 });
 
+//Admin side 
 
-Route::get('logout', '\App\Http\Controllers\Auth\MovieController@logout');
+Route::get('redirects','App\Http\Controllers\HomeController@index');
 
-Route::get('/view_movies',[ViewController::class,'index']);
+Route::resource('movies', MovieController::class);
 
-Route::get('/view_actor',[ViewActorController::class,'index']);
-
-Route::get('/seats',[ViewController::class,'viewseat']);
-
-Route::get('/viewTicket',[SeatBookController::class,'index']);
-
-Route::post('/seats', "App\Http\Controllers\SeatBookController@store");
-
-// Route::resource('seats', SeatBookController::class);
-
-Route::get('/theatreshow',[ViewTheatreController::class,'viewshow']);
-
-Route::get('/search',[ViewController::class,'search']);
+Route::get('/index',[MovieController::class,'index']);
 
 Route::get('/create',[ActorController::class,'index']);
 
@@ -69,6 +53,27 @@ Route::resource('actors', ActorController::class);
 Route::get('/create',[TheatreController::class,'index']);
 
 Route::resource('theatre', TheatreController::class);
+
+
+//user side
+
+Route::get('logout', '\App\Http\Controllers\Auth\MovieController@logout');
+
+Route::get('/view_movies',[ViewController::class,'index']);
+
+Route::get('/seats',[ViewController::class,'viewseat']);
+
+Route::get('/search',[ViewController::class,'search']);
+
+Route::get('/view_actor',[ViewActorController::class,'index']);
+
+Route::get('/viewTicket',[SeatBookController::class,'index']);
+
+Route::post('/seats', "App\Http\Controllers\SeatBookController@store");
+
+// Route::resource('seats', SeatBookController::class);
+
+Route::get('/theatreshow',[ViewTheatreController::class,'viewshow']);
 
 Route::get('/moviepost',[MoviePostController::class,'index']);
 

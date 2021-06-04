@@ -7,6 +7,9 @@ use App\Models\Actor;
 
 class ActorController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['welcome', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *

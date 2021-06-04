@@ -7,6 +7,9 @@ use App\Models\theatres;
 
 class TheatreController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['welcome', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *

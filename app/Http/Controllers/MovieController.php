@@ -8,6 +8,10 @@ use Auth;
 
 class MovieController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['welcome', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

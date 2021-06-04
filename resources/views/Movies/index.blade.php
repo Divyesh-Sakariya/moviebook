@@ -10,11 +10,17 @@
         <span class="ml-3 text-xl">Movie Application</span>
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a href="{{ route('movies.create') }}" class="btn btn-success">Add Movie</a>
+        <a href="{{ route('movies.create') }}" class="btn btn-success mr-6">Add Movie</a>
         {{-- <a href="{{ route('actors.create') }}" class="btn btn-success ml-6">Add Actor</a> --}}
-        <a href="{{ route('actors.index') }}" class="btn btn-success ml-6">Show Actor</a>
-        <a href="{{ route('theatre.index') }}" class="btn btn-success ml-6">Show Theatre</a>
-        <a href="/" class="btn btn-primary ml-6">Back</a>
+        <a href="{{ route('actors.index') }}" class="btn btn-success mr-6">Show Actor</a>
+        <a href="{{ route('theatre.index') }}" class="btn btn-success mr-6">Show Theatre</a>
+        <a href="/" class="btn btn-primary mr-6">Back</a>
+        <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+            Logout
+        </a>  
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;" > 
+            {{ csrf_field() }}
+        </form>
         
       </nav>
       </div>
